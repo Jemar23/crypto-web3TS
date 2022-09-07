@@ -1,9 +1,20 @@
 import type { NextPage } from "next";
 import Head from "next/head";
+import { useRouter } from 'next/router'
+import { useForm } from "react-hook-form";
 import { trpc } from "../utils/trpc";
+
+interface FormData {
+  userName: string;
+  email: string;
+  password: string;
+}
 
 const Home: NextPage = () => {
   const hello = trpc.useQuery(["example.hello", { text: "from tRPC" }]);
+  const { register, handleSubmit, formState: { error } } = useForm<FormData>();
+  const onSubmit = handleSubmit(data => console.log(data));
+  const router = useRouter();
 
   return (
     <>
@@ -17,7 +28,23 @@ const Home: NextPage = () => {
         <h1 className="text-5xl md:text-[5rem] leading-normal font-extrabold text-gray-700">
           Enter Into the <span className="text-blue-600">NFT</span> World
         </h1>
-        
+
+        <div className="flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+        <form onSubmit={onSubmit}>
+          <div className="w-full max-w-md space-y-8">
+          <input className="relative block w-full appearance-none rounded-lg border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"  placeholder="Username"{...register("userName")} />
+          <input className="relative block w-full appearance-none rounded-lg border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm" type="password"  placeholder="Email address" {...register("password")} />
+          <input className="relative block w-full appearance-none rounded-lg border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm" type="email"  placeholder="Password" {...register("email")} />
+          <button 
+          type="button"
+          onClick={() => router.push('/menu')}
+          className="group relative flex w-full justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+              Submit
+            </button>
+            
+        </div>
+        </form>
+        </div>
         <div className="pt-6 text-2xl text-blue-500 flex justify-center items-center w-full">
           {hello.data ? <p>{hello.data.greeting}</p> : <p>Loading..</p>}
         </div>
@@ -28,29 +55,5 @@ const Home: NextPage = () => {
 
 export default Home;
 
- interface SignUpProps {
-   userName: string;
-   email: string;
-   password: string;
- }
 
-// const TechnologyCard = ({
-//   name,
-//   description,
-//   documentation,
-// }: TechnologyCardProps) => {
-//   return (
-//     <section className="flex flex-col justify-center p-6 duration-500 border-2 border-gray-500 rounded shadow-xl motion-safe:hover:scale-105">
-//       <h2 className="text-lg text-gray-700">{name}</h2>
-//       <p className="text-sm text-gray-600">{description}</p>
-//       <a
-//         className="mt-3 text-sm underline text-violet-500 decoration-dotted underline-offset-2"
-//         href={documentation}
-//         target="_blank"
-//         rel="noreferrer"
-//       >
-//         Documentation
-//       </a>
-//     </section>
-//   );
-// };
+ 
