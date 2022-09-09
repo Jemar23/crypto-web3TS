@@ -2,6 +2,8 @@ import { GetStaticProps } from 'next'
 import React from 'react';
 import Link from 'next/link'
 
+
+
 export async function getStaticProps() {
     const options = {
         method: 'GET',

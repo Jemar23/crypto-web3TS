@@ -38,10 +38,10 @@ function MarketPlaces() {
 function Markets() {
   
     const marketList = marketplaces.map(market => 
-        <a target="_blank" href={market.website} rel="noreferrer">
+        <a key={market.id} target="_blank" href={market.website} rel="noreferrer">
         <div className="flex items-center justify-center text-center h-96 w-80 bg-transparent backdrop-blur-sm rounded-md border border-slate-700 shadow-lg overflow-hidden text-black hover:bg-blue-50 transition delay-150 duration-300 ease-in-out">
              <div className="w-24">
-                 <img className="rounded-lg" key={market.id} src={market.image} alt="" />
+                 <img className="rounded-lg" src={market.image} alt="" />
                     {market.title}
              </div>
          </div>
