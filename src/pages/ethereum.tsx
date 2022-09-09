@@ -1,6 +1,7 @@
 import { GetStaticProps } from 'next'
 import React from 'react';
 import Link from 'next/link'
+import MediaCard from './Collections/opensea'
 
 
 
