@@ -2,6 +2,18 @@ import React, { useState } from 'react';
 import { GetStaticProps } from 'next'
 import Link from 'next/link'
 import Image from 'next/image'
+import Web3 from "web3";
+import Web3Modal from "web3modal";
+import WalletConnectProvider from "@walletconnect/web3-provider";
+
+const providerOptions = {
+  walletconnect: {
+    package: WalletConnectProvider,
+    options: {
+      infuraId: process.env.NEXT_PUBLIC_INFURA_ID 
+    }
+  }
+};
 
 function Menu() {
     return(
@@ -9,7 +21,7 @@ function Menu() {
             <Nav />
             <div>
                 <Contain />
-                <Connect />
+                {/* <Connect /> */}
             </div>
         </div>
     )
@@ -42,48 +54,58 @@ function Contain() {
       <div className="container mx-auto px-14 w-2/3 space-y-4 pt-12 text-lg text-slate-300">
         <div className="flex items-center justify-center text-center h-fit bg-black rounded-md border border-slate-700 shadow-lg overflow-hidden">
           Data
+          <Connect />
         </div>
       </div>
     );
   }
 
-  export async function getStaticProps() {
-    // const [walletNft, setWalletNft] = useState<string[]>([])
-     const walletAddress = null
+  // export async function getStaticProps() {
+  //   // const [walletNft, setWalletNft] = useState<string[]>([])
+  //    const walletAddress = null
 
 
-      const options = {
-        method: 'GET',
-        headers: {Accept: 'application/json', 'X-API-KEY': process.env.API_KEY}
-      };
+  //     const options = {
+  //       method: 'GET',
+  //       headers: {Accept: 'application/json', 'X-API-KEY': process.env.API_KEY}
+  //     };
 
-    const res = await fetch(`https://api.opensea.io/api/v1/assets?owner=${walletAddress}&order_direction=desc&limit=20&include_orders=false`, options)
-    const data = await res.json()
+  //   const res = await fetch(`https://api.opensea.io/api/v1/assets?owner=${walletAddress}&order_direction=desc&limit=20&include_orders=false`, options)
+  //   const data = await res.json()
 
-    return {
-      props: {
-        data
-      }
-    }
-  }
+  //   return {
+  //     props: {
+  //       data
+  //     }
+  //   }
+  // }
 
   function Connect() {
-    const [walletAddress, setWalletAddress] = useState(null)
   
-    const connectWallet = async () => {
-      if (typeof window.ethereum !== 'undefined') {
-        console.log('MetaMask is installed!');
-        const accountRequest = await window.ethereum.request({ method: 'eth_requestAccounts' });
+    // const [walletAddress, setWalletAddress] = useState(null)
+  
+    // const connectWallet = async () => {
+    //   if (typeof window.ethereum !== 'undefined') {
+    //     console.log('MetaMask is installed!');
+    //     const accountRequest = await window.ethereum.request({ method: 'eth_requestAccounts' });
 
-        setWalletAddress(accountRequest[0])
-      }
-    }
-
-    // if(!walletAddress) return;
-
+    //     setWalletAddress(accountRequest[0])
+    //   }
+    // }
+    // // if(!walletAddress) return;
     return (
       <div>
-        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full" onClick={connectWallet}>
+        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full" onClick={async () => {
+           if (typeof window !== 'undefined') {
+            const web3Modal = new Web3Modal({
+              network: "mainnet", 
+              cacheProvider: true,
+              providerOptions 
+            });
+          }
+          const provider = await web3Modal.connect();
+            const web3 = new Web3(provider);
+        }}>
         Connect Wallet
        </button>
       </div>
