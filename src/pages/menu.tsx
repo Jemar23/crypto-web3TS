@@ -9,6 +9,7 @@ function Menu() {
             <Nav />
             <div>
                 <Contain />
+                <Connect />
             </div>
         </div>
     )
@@ -46,36 +47,47 @@ function Contain() {
     );
   }
 
+  export async function getStaticProps() {
+    // const [walletNft, setWalletNft] = useState<string[]>([])
+     const walletAddress = null
+
+
+      const options = {
+        method: 'GET',
+        headers: {Accept: 'application/json', 'X-API-KEY': process.env.API_KEY}
+      };
+
+    const res = await fetch(`https://api.opensea.io/api/v1/assets?owner=${walletAddress}&order_direction=desc&limit=20&include_orders=false`, options)
+    const data = await res.json()
+
+    return {
+      props: {
+        data
+      }
+    }
+  }
+
+  function Connect() {
+    const [walletAddress, setWalletAddress] = useState(null)
   
+    const connectWallet = async () => {
+      if (typeof window.ethereum !== 'undefined') {
+        console.log('MetaMask is installed!');
+        const accountRequest = await window.ethereum.request({ method: 'eth_requestAccounts' });
 
-  // function Connect() {
-  //   const [walletAddress, setWalletAddress] = useState(null)
-  //   const [walletNft, setWalletNft] = useState<[]>([])
+        setWalletAddress(accountRequest[0])
+      }
+    }
 
-  //   const connectWallet = async () => {
-  //       if (typeof window.ethereum !== 'undefined') {
-  //         console.log('MetaMask is installed!');
-  //         const accountRequest = await window.ethereum.request({ method: 'eth_requestAccounts' });
-  
-  //         setWalletAddress(accountRequest[0])
-  //       }
-  //     }
-  //     const options = {
-  //       method: 'GET',
-  //       headers: {Accept: 'application/json', 'X-API-KEY': process.env.API_KEY}
-  //     };
-  //     if(!walletAddress) return;
-  //     export const GetStaticProps : GetStaticProps = async (context) => {
-  //       const res = await fetch(`https://api.opensea.io/api/v1/assets?owner=${walletAddress}&order_direction=desc&limit=20&include_orders=false`, options);
-  //       const { results } = await res.json(); 
-        
-  //       return {
-  //         props: {
-  //           assets: results
-  //         }
-  //       }
-  //   }
-// }
+    // if(!walletAddress) return;
 
+    return (
+      <div>
+        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full" onClick={connectWallet}>
+        Connect Wallet
+       </button>
+      </div>
+    )
+  }
 
 export default Menu;
