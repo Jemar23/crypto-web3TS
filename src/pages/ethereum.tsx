@@ -5,6 +5,7 @@ import MediaCard from './Collections/opensea'
 
 
 
+
 export async function getStaticProps() {
     const options = {
         method: 'GET',

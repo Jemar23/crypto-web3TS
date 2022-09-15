@@ -30,8 +30,8 @@ function MediaCard({ data }) {
         <CardMedia
           component="img"
           height="140"
-          image={data.collection.banner_image_url}
-          alt="green iguana"
+          image={data.collection.banner_image_url} 
+          alt="Bored Apes"
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
