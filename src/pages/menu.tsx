@@ -8,7 +8,7 @@ function Menu() {
         <div className="bg-slate-900 h-screen">
             <Nav />
             <div className="mx-auto overflow-auto h-full">   
-                <Contain />   
+                <Contain />  
             </div>
         </div>
     )  
@@ -70,7 +70,7 @@ function Contain() {
       const res: any = await fetch(`https://api.opensea.io/api/v1/assets?owner=${walletAddress}&order_direction=desc&limit=20&include_orders=false`, options)
         .then(response => response.json())
         .then(({ assets }) => {
-          assets.forEach((attributes) => {
+          assets.forEach((attributes: ImageData) => {
             document.getElementById("container").append(renderImageData(attributes))
           })
         })
@@ -82,7 +82,14 @@ function Contain() {
         setWalletNft(data?.assets)
     }
 
-    const renderImageData = ( { name, description, permalink, image_preview_url} ) => {
+    interface ImageData { 
+      name: string,
+      description: string,
+      permalink: string,
+      image_preview_url: string
+    }
+
+    const renderImageData = ( { name, description, permalink, image_preview_url}: ImageData ) => {
       const newElement = document.getElementById("temp").cloneNode(true)
 
       newElement.querySelector("h1").innerText = name
