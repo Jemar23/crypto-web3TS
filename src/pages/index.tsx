@@ -46,7 +46,7 @@ const Home: NextPage = () => {
         </form>
         </div>
         <div>
-          Hello
+          hello
         </div>
         <div className="pt-6 text-2xl text-blue-500 flex justify-center items-center w-full">
           {hello.data ? <p>{hello.data.greeting}</p> : <p>Loading..</p>}
