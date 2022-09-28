@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { GetStaticProps } from 'next'
+import { useSession } from "next-auth/react"
 import Link from 'next/link'
 import Image from 'next/image'
 
@@ -31,8 +32,8 @@ function Nav() {
         <Link href="/checkprofit"><a className="text-gray-100 p-2 rounded-full font-medium text-lg hover:bg-blue-500 focus:bg-gray-200 focus:shadow-outline">Check Profits</a></Link>
         <Link href="/Collections/topEth"><a className="text-gray-100 p-2 rounded-full font-medium text-lg hover:bg-blue-500 focus:bg-gray-200 focus:shadow-outline">Top Ethereum NFT's</a></Link>
         <Link href="/Collections/magiceden"><a className="text-gray-100 p-2 rounded-full font-medium text-lg hover:bg-blue-500 focus:bg-gray-200 focus:shadow-outline">Top Solana NFT's</a></Link>
-        <Link href="/"><a className="text-gray-100 p-2 rounded-full font-medium text-lg hover:bg-blue-500 focus:bg-gray-200 focus:shadow-outline">Logout</a></Link>
-    </div>
+        <Link href="/api/auth/signout"><a className="text-gray-100 p-2 rounded-full font-medium text-lg hover:bg-blue-500 focus:bg-gray-200 focus:shadow-outline">signout</a></Link>
+        </div>
     );
 }
 
