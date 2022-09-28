@@ -4,7 +4,7 @@ import * as React from 'react'
 import { useRouter } from 'next/router'
 import { useForm } from "react-hook-form";
 import { trpc } from "../utils/trpc";
-import { signUp } from "./signUp";
+import { useSession, signIn } from "next-auth/react"
 
 interface FormData {
   userName: string;
@@ -39,7 +39,7 @@ const Home: NextPage = () => {
           <input className="relative block w-full appearance-none rounded-lg border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm" type="password"  placeholder="Password" {...register("email")} /> */}
           <button 
           type="button"
-          onClick={() => router.push('/api/auth/signin')}
+          onClick={() => signIn()}
           className="group relative flex w-full justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
               Sign Up!
             </button>
@@ -53,6 +53,26 @@ const Home: NextPage = () => {
     </>
   );
 };
+
+
+  //  export async function getServerSideProps(context: any) {
+  //    const session = await getSession(context)
+
+  //    if (session) {
+  //      return {
+  //        redirect: {
+  //          destination: '/menu',
+  //          permanent: false,
+  //        },
+  //      }
+  //    } 
+
+  //    return {
+  //      props: {
+  //        session
+  //      }
+  //    }
+  //  }
 
 export default Home;
 

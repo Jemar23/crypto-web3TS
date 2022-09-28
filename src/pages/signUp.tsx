@@ -1,6 +1,6 @@
 import { getProviders, signIn } from "next-auth/react"
 
-export default function SignIn({ providers }) {
+export default function SignIn({ providers }: any) {
   return (
     <>
       {Object.values(providers).map((provider) => (
