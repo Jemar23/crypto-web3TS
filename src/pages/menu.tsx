@@ -31,7 +31,7 @@ function Nav() {
         <Link href="/solana"><a className="text-gray-100 p-2 rounded-full font-medium text-lg hover:bg-blue-500 focus:bg-gray-200 focus:shadow-outline">Crypto Prices</a></Link>
         <Link href="/checkprofit"><a className="text-gray-100 p-2 rounded-full font-medium text-lg hover:bg-blue-500 focus:bg-gray-200 focus:shadow-outline">Check Profits</a></Link>
         <Link href="/Collections/topEth"><a className="text-gray-100 p-2 rounded-full font-medium text-lg hover:bg-blue-500 focus:bg-gray-200 focus:shadow-outline">Top Ethereum NFT's</a></Link>
-        <Link href="/Collections/magiceden"><a className="text-gray-100 p-2 rounded-full font-medium text-lg hover:bg-blue-500 focus:bg-gray-200 focus:shadow-outline">Top Solana NFT's</a></Link>
+        <Link href="/Collections/topSolana"><a className="text-gray-100 p-2 rounded-full font-medium text-lg hover:bg-blue-500 focus:bg-gray-200 focus:shadow-outline">Top Solana NFT's</a></Link>
         <button onClick={() => signOut({callbackUrl: '/'})} className="text-gray-100 p-2 rounded-full font-medium text-lg hover:bg-blue-500 focus:bg-gray-200 focus:shadow-outline">signout</button>
         </div>
     );
