@@ -4,7 +4,7 @@ import * as React from 'react'
 import { useRouter } from 'next/router'
 import { useForm } from "react-hook-form";
 import { trpc } from "../utils/trpc";
-import { useSession, signIn } from "next-auth/react"
+import { useSession, signIn, getSession } from "next-auth/react"
 
 interface FormData {
   userName: string;
@@ -55,24 +55,24 @@ const Home: NextPage = () => {
 };
 
 
-  //  export async function getServerSideProps(context: any) {
-  //    const session = await getSession(context)
+    export async function getServerSideProps(context: any) {
+      const session = await getSession(context)
 
-  //    if (session) {
-  //      return {
-  //        redirect: {
-  //          destination: '/menu',
-  //          permanent: false,
-  //        },
-  //      }
-  //    } 
+      if (session) {
+        return {
+          redirect: {
+            destination: '/menu',
+            permanent: false,
+          },
+        }
+      } 
 
-  //    return {
-  //      props: {
-  //        session
-  //      }
-  //    }
-  //  }
+      return {
+        props: {
+          session
+        }
+      }
+    }
 
 export default Home;
 

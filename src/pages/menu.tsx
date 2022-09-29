@@ -15,11 +15,11 @@ function Menu() {
     )  
 }
 
-
 function Nav() {
+  const { data: session } = useSession()
     return(
     <div className="bg-black text-white text-center p-4 flex flex-col text-xl absolute inset-y-0 left-0 w-64 place-content-evenly">
-      NFT Profit Manager
+      Hello {session?.user?.name}!
         <Image
         className="rounded-full"
         src="https://lh3.googleusercontent.com/-j8nIV5iv0V0MF4T1FLp7XpZm_P4C1BdNV8QQMUFpaxdiDdXOMdkxFgjRaPGgYnN_I4DlSdRNo79pJtig7esjFjc3R4F3F39jXTt=w600"
@@ -131,23 +131,23 @@ function Container() {
   );
 }
 
-// export async function getServerSideProps(context: any) {
-//   const session = await getSession(context)
+export async function getServerSideProps(context: any) {
+  const session = await getSession(context)
 
-//   if (!session) {
-//     return {
-//       redirect: {
-//         destination: '/',
-//         permanent: false,
-//       },
-//     }
-//   } 
+  if (!session) {
+    return {
+      redirect: {
+        destination: '/',
+        permanent: false,
+      },
+    }
+  } 
 
-//   return {
-//     props: {
-//       session
-//     }
-//   }
-// }
+  return {
+    props: {
+      session
+    }
+  }
+}
   
 export default Menu;
