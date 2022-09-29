@@ -1,5 +1,7 @@
 import { createRouter } from "./context";
+import { prisma } from "../db/client";
 import { z } from "zod";
+
 
 export const exampleRouter = createRouter()
   .query("hello", {
@@ -18,4 +20,15 @@ export const exampleRouter = createRouter()
     async resolve({ ctx }) {
       return await ctx.prisma.example.findMany();
     },
+  })
+  .mutation("addTotal", {
+    input: z.object({
+      total: z.number()
+    }),
+    async resolve({ ctx, input}) {
+      const totalInDb = await ctx.prisma.profit.create({
+        data: input
+      })
+      return { profit: totalInDb };
+    }
   });

@@ -14,6 +14,7 @@ interface FormData {
 
 const Home: NextPage = () => {
   const hello = trpc.useQuery(["example.hello", { text: "from tRPC" }]);
+  
   const { register, handleSubmit, formState: { error } } = useForm<FormData>();
   const onSubmit = handleSubmit(data => console.log(data));
   const router = useRouter();
