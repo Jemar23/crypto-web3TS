@@ -4,7 +4,7 @@ import Link from 'next/link'
 
 function Solranks() {
     return(
-        <div className="bg-black mx-auto overflow-auto h-full">
+        <div className="bg-black mx-auto overflow-auto h-screen">
             <Link href="/menu" passHref>
             <MyButton />
             </Link>

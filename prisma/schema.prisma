@@ -49,9 +49,16 @@ model User {
   email         String?   @unique
   emailVerified DateTime?
   image         String?  
-  total         Int      @default(0)
   accounts      Account[]
   sessions      Session[]
+  profits       Profit[]   
+}
+
+model Profit {
+    id          String   @id @default(cuid())
+    userId      String
+    total       Int      @default(0)
+    user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
 model VerificationToken {

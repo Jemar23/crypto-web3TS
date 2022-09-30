@@ -4,7 +4,7 @@ import Link from 'next/link'
 
 function Ranks() {
     return(
-        <div className="bg-slate-600 mx-auto overflow-auto h-full">
+        <div className="bg-slate-600 mx-auto overflow-auto h-screen">
             <Link href="/menu" passHref>
             <MyButton />
             </Link>
