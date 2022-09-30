@@ -5,6 +5,7 @@ import { trpc } from "../utils/trpc";
 import Link from 'next/link'
 import Image from 'next/image'
 
+
 function Menu() {
     return(
         <div className="bg-slate-900 h-screen">
@@ -18,7 +19,7 @@ function Menu() {
 
 function Nav() {
   const { data: session } = useSession()
-  // console.log(session)
+   console.log(session)
     return(
     <div className="bg-black text-white text-center p-4 flex flex-col text-xl absolute inset-y-0 left-0 w-64 place-content-evenly">
       Hello {session?.user?.name}!
@@ -40,6 +41,7 @@ function Nav() {
 }
 
 function Contain() {
+  const { data: session } = useSession()
   const profitMutation = trpc.useMutation(["example.addTotal"]);
   const onAdd = () => {
     profitMutation.mutate({ 
@@ -52,7 +54,7 @@ function Contain() {
            <WalletConnect />   
         </div> 
         <button onClick={onAdd}>Add</button>
-        
+        {/* {session?.user?.total}  */}
       </div>
     ); 
   }

@@ -25,8 +25,8 @@ export const exampleRouter = createRouter()
     input: z.object({
       total: z.number()
     }),
-    async resolve({ ctx, input}) {
-      const totalInDb = await ctx.prisma.profit.create({
+    async resolve({ input }) {
+      const totalInDb = await prisma.user.create({
         data: input
       })
       return { profit: totalInDb };
