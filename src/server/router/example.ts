@@ -1,7 +1,6 @@
 import { createRouter } from "./context";
 import { prisma } from "../db/client";
 import { z } from "zod";
-import { PrismaClient, Prisma } from '@prisma/client'
 
 export const exampleRouter = createRouter()
   .query("hello", {
@@ -20,6 +19,19 @@ export const exampleRouter = createRouter()
     async resolve({ ctx }) {
       return await ctx.prisma.user.findMany();
     },
+  })
+  .query("getTotal", {
+    input: z.object({
+      userSession: z.string()
+    }),
+    async resolve({ input }) {
+      const getter = await prisma.user.findUnique({
+        where: { 
+          id: input
+        }
+      })
+      return { getProfit: getter}
+    }
   })
   .mutation("addTotal", {
     input: z.object({
