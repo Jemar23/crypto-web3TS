@@ -22,7 +22,7 @@ export const exampleRouter = createRouter()
   })
   .query("getTotal", {
     input: z.object({
-      userSession: z.string()
+      id: z.string().nullish(),
     }),
     async resolve({ input }) {
       const getter = await prisma.user.findUnique({
@@ -30,7 +30,7 @@ export const exampleRouter = createRouter()
           id: input
         }
       })
-      return { getProfit: getter}
+      return { getter }
     }
   })
   .mutation("addTotal", {

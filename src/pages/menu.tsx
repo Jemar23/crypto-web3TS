@@ -41,7 +41,10 @@ function Nav() {
 
 function Contain() {
   const { data: session } = useSession()
-  const profitQuery = trpc.useQuery(["example.getAll"])
+  //console.log(session)
+  //console.log(session.user.id)
+  const profitQuery = trpc.useQuery(["example.getTotal", {id: session?.user?.id}])
+  //console.log(profitQuery?.data?.getter)
   
     return (
       <div className="container mx-auto px-14 w-2/3 space-y-4 pt-12 text-lg text-slate-300"> 
@@ -49,7 +52,6 @@ function Contain() {
            <WalletConnect />   
         </div> 
         {/* <button onClick={onAdd}>Add</button> */}
-        {session?.user?.total}
       </div>
     ); 
   }
