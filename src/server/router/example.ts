@@ -36,8 +36,8 @@ export const exampleRouter = createRouter()
   .mutation("addTotal", {
     input: z.object({
       id: z.string().nullish(),
-      buy: z.number(),
-      sell: z.number()
+      buy: z.string(),
+      sell: z.string()
     }),
     async resolve({ input }) {
       const updateTotal = await prisma.user.update({
@@ -45,7 +45,9 @@ export const exampleRouter = createRouter()
           id: input.id
         },
         data: {
-          total: input.sell - input.buy
+          total: {
+            increment: input.sell - input.buy,
+          }
         }
       })
       return { profit: updateTotal };

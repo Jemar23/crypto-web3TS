@@ -34,8 +34,8 @@ function Prices({ data }: GetStaticProps) {
                   <h1 className="text-3xl">Solana</h1>
                 </div>
               <div id="inventory" className="flex items-center justify-center text-center h-96 bg-gradient-to-r from-pink-400 via-purple-600 to-teal-500 rounded-md border border-slate-700 shadow-lg overflow-hidden">
-              <img className="w-24 rounded-full" src= "https://www.economywatch.com/wp-content/uploads/2021/06/solana-1.jpg" /> 
-                <h1 className="text-3xl p-4">{data.data.amount}</h1>
+              <img className="w-24 rounded-full" src="https://www.economywatch.com/wp-content/uploads/2021/06/solana-1.jpg" /> 
+                <h1 className="text-3xl p-4">${data.data.amount}</h1>
           </div>
           </div>
       </div>

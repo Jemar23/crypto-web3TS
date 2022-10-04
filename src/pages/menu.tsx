@@ -12,25 +12,47 @@ interface IFormInput {
 }
 
 function GetFormData() {
-  const { register, handleSubmit } = useForm<IFormInput>();
-  const buyPrice = 0
-  const sellPrice = 0
+  const { data: session } = useSession()
+  const utils = trpc.useContext();
+  const updateProfit = trpc.useMutation(["example.addTotal"])
+  const { register, handleSubmit } = useForm<IFormInput>(); 
+  const [buyPrice, setBuyPrice] = useState<string>("")
+  const [sellPrice, setSellPrice] = useState<string>("")
   // OnSubmit should mutate data in DB
   const onSubmit: SubmitHandler<IFormInput> = () => {
-    const calculation: number = (sellPrice - buyPrice);
-    console.log(calculation);
-  }
+     updateProfit.mutate({
+        id: session?.user?.id,
+        buy: buyPrice,
+        sell: sellPrice
+     },
+     {
+      onSuccess: () => {
+        utils.invalidateQueries()
+      }
+     }
+     );
+  };
 
   return(
     <div>
       <form onSubmit={handleSubmit(onSubmit)}>
-      <label>Buy Price</label>
-      <input {...register("buy")} value={buyPrice} />
-      <label>Sell Price</label>
-      <input {...register("sell")} value={sellPrice}/>
-      <input type="submit" />
+      <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+      <label className="text-center text-3xl md:text-[2rem] leading-normal font-extrabold text-gray-700 flex justify-between">Buy Price</label>
+      <input {...register("buy")} 
+      className="text-center text-3xl md:text-[2rem] h-40 bg-transparent rounded-md border border-slate-700 shadow-lg overflow-auto"
+      value={buyPrice}
+      onChange={(e)=> setBuyPrice(e.target.value)}  />
+      </div>
+      <div className="w-full md:w-1/2 px-3">
+      <label className="text-center text-3xl md:text-[2rem] leading-normal font-extrabold text-gray-700 flex justify-between">Sell Price</label>
+      <input {...register("sell")} 
+      className="text-center text-3xl md:text-[2rem] h-40 bg-transparent rounded-md border border-slate-700 shadow-lg overflow-auto"
+      value={sellPrice} 
+      onChange={(e)=> setSellPrice(e.target.value)}/>
+      <input className="text-center text-3xl md:text-[2rem] leading-normal font-extrabold bg-blue-500 hover:bg-blue-700 text-white py-2 px-6 rounded-full" type="submit" />
+      </div>
     </form>
-    </div>
+    </div>  
   );
 }
 
@@ -48,7 +70,7 @@ function Menu() {
 function Nav() {
   const { data: session } = useSession()
     return(
-    <div className="bg-black text-white text-center p-4 flex flex-col text-xl absolute inset-y-0 left-0 w-64 place-content-evenly">
+    <div className="bg-black text-white font-extrabold text-center p-4 flex flex-col text-xl absolute inset-y-0 left-0 w-64 place-content-evenly">
       Hello {session?.user?.name}!
         <Image
         className="rounded-full"
@@ -57,12 +79,12 @@ function Nav() {
         width={600}
         height={600} 
         />
-        <Link href="/marketplace"><a className="text-gray-100 p-2 rounded-full font-medium text-lg hover:bg-blue-500 focus:bg-gray-200 focus:shadow-outline">MarketPlaces</a></Link>
-        <Link href="/solana"><a className="text-gray-100 p-2 rounded-full font-medium text-lg hover:bg-blue-500 focus:bg-gray-200 focus:shadow-outline">Crypto Prices</a></Link>
-        <Link href="/checkprofit"><a className="text-gray-100 p-2 rounded-full font-medium text-lg hover:bg-blue-500 focus:bg-gray-200 focus:shadow-outline">Check Profits</a></Link>
-        <Link href="/Collections/topEth"><a className="text-gray-100 p-2 rounded-full font-medium text-lg hover:bg-blue-500 focus:bg-gray-200 focus:shadow-outline">Top Ethereum NFT's</a></Link>
-        <Link href="/Collections/topSolana"><a className="text-gray-100 p-2 rounded-full font-medium text-lg hover:bg-blue-500 focus:bg-gray-200 focus:shadow-outline">Top Solana NFT's</a></Link>
-        <button onClick={() => signOut({callbackUrl: '/'})} className="text-gray-100 p-2 rounded-full font-medium text-lg hover:bg-blue-500 focus:bg-gray-200 focus:shadow-outline">signout</button>
+        <Link href="/marketplace"><a className="text-gray-100 p-2 rounded-full font-bold text-lg hover:bg-blue-500 focus:bg-gray-200 focus:shadow-outline">MarketPlaces</a></Link>
+        <Link href="/solana"><a className="text-gray-100 p-2 rounded-full font-bold text-lg hover:bg-blue-500 focus:bg-gray-200 focus:shadow-outline">Crypto Prices</a></Link>
+        <Link href="/checkprofit"><a className="text-gray-100 p-2 rounded-full font-bold text-lg hover:bg-blue-500 focus:bg-gray-200 focus:shadow-outline">Check Profits</a></Link>
+        <Link href="/Collections/topEth"><a className="text-gray-100 p-2 rounded-full font-bold text-lg hover:bg-blue-500 focus:bg-gray-200 focus:shadow-outline">Top Ethereum NFT's</a></Link>
+        <Link href="/Collections/topSolana"><a className="text-gray-100 p-2 rounded-full font-bold text-lg hover:bg-blue-500 focus:bg-gray-200 focus:shadow-outline">Top Solana NFT's</a></Link>
+        <button onClick={() => signOut({callbackUrl: '/'})} className="text-gray-100 p-2 rounded-full font-bold text-lg hover:bg-blue-500 focus:bg-gray-200 focus:shadow-outline">Signout</button>
         </div>
     );
 }
@@ -70,16 +92,16 @@ function Nav() {
 function Contain() {
   const { data: session } = useSession()
   const profitQuery = trpc.useQuery(["example.getTotal", {id: session?.user?.id}])
-  //console.log(profitQuery.data)
   
     return (
       <div className="container mx-auto px-14 w-2/3 space-y-4 pt-12 text-lg text-slate-300"> 
         <div className="flex items-center justify-center text-center h-fit bg-transparent rounded-md border border-slate-700 shadow-lg overflow-auto">  
            <WalletConnect />   
         </div> 
-        {/* <button onClick={onAdd}>Add</button> */}
+        <div className="text-center text-5xl md:text-[5rem] leading-normal font-extrabold text-gray-700">
         {profitQuery.data?.getter?.total}
-        <div>
+        </div>
+        <div className="grid grid-cols-2 gap-4">
         <GetFormData />
         </div>
       </div>
@@ -149,7 +171,7 @@ function Contain() {
        <div className="text-center">
         {/* Account: {walletAddress} */}
       </div>
-      <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full" onClick={connectWallet}>
+      <button className="bg-blue-500 hover:bg-blue-700 text-white font-extrabold py-2 px-4 rounded-full" onClick={connectWallet}>
         Connect Wallet
     </button>
      <Container nft={walletNft}/>  

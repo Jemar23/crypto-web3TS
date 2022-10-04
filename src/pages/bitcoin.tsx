@@ -34,7 +34,7 @@ function BitCoin({ data }: GetStaticProps) {
                 </div>
               <div id="inventory" className="flex items-center justify-center text-center h-96 bg-gradient-to-r from-black via-amber-600 to-gray-500 rounded-md border border-slate-700 shadow-lg overflow-hidden">
               <img className="w-24 rounded-full" src= "https://i.pinimg.com/originals/ca/1b/79/ca1b79af209cb5d3935bddb1513ba220.jpg" /> 
-                <h1 className="text-3xl p-4">{data.data.amount}</h1>
+                <h1 className="text-3xl p-4">${data.data.amount}</h1>
           </div>
           </div>
       </div>

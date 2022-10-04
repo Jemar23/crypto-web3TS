@@ -27,7 +27,7 @@ const marketplaces: markets[] = [
 function MarketPlaces() {
     return(
         <div className="bg-[url('https://content.fortune.com/wp-content/uploads/2022/01/web_FRESHAIR.jpg?w=800&h=919')] bg-no-repeat bg-cover h-full">
-            <div className="text-center text-3xl text-black p-5">Browse NFT MarketPlaces!</div>
+            <div className="text-center text-5xl md:text-[5rem] leading-normal font-extrabold text-gray-700">Browse NFT MarketPlaces!</div>
             <div className="">
                 <Markets />
             </div>
