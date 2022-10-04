@@ -27,7 +27,7 @@ export const exampleRouter = createRouter()
     async resolve({ input }) {
       const getter = await prisma.user.findUnique({
         where: { 
-          id: input
+          id: input.id
         }
       })
       return { getter }
@@ -35,12 +35,19 @@ export const exampleRouter = createRouter()
   })
   .mutation("addTotal", {
     input: z.object({
-      total: z.number()
+      id: z.string().nullish(),
+      buy: z.number(),
+      sell: z.number()
     }),
     async resolve({ input }) {
-      const totalInDb = await prisma.user.create({
-        data: input
+      const updateTotal = await prisma.user.update({
+        where: {
+          id: input.id
+        },
+        data: {
+          total: input.sell - input.buy
+        }
       })
-      return { profit: totalInDb };
+      return { profit: updateTotal };
     }
   });

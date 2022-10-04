@@ -2,9 +2,37 @@ import React, { useState, useEffect } from 'react';
 import { GetServerSideProps } from 'next'
 import { useSession, getSession, signOut } from "next-auth/react"
 import { trpc } from "../utils/trpc";
+import { useForm, SubmitHandler } from "react-hook-form";
 import Link from 'next/link'
 import Image from 'next/image'
 
+interface IFormInput {
+  buy: number
+  sell: number
+}
+
+function GetFormData() {
+  const { register, handleSubmit } = useForm<IFormInput>();
+  const buyPrice = 0
+  const sellPrice = 0
+  // OnSubmit should mutate data in DB
+  const onSubmit: SubmitHandler<IFormInput> = () => {
+    const calculation: number = (sellPrice - buyPrice);
+    console.log(calculation);
+  }
+
+  return(
+    <div>
+      <form onSubmit={handleSubmit(onSubmit)}>
+      <label>Buy Price</label>
+      <input {...register("buy")} value={buyPrice} />
+      <label>Sell Price</label>
+      <input {...register("sell")} value={sellPrice}/>
+      <input type="submit" />
+    </form>
+    </div>
+  );
+}
 
 function Menu() {
     return(
@@ -41,10 +69,8 @@ function Nav() {
 
 function Contain() {
   const { data: session } = useSession()
-  //console.log(session)
-  //console.log(session.user.id)
   const profitQuery = trpc.useQuery(["example.getTotal", {id: session?.user?.id}])
-  //console.log(profitQuery?.data?.getter)
+  //console.log(profitQuery.data)
   
     return (
       <div className="container mx-auto px-14 w-2/3 space-y-4 pt-12 text-lg text-slate-300"> 
@@ -52,6 +78,10 @@ function Contain() {
            <WalletConnect />   
         </div> 
         {/* <button onClick={onAdd}>Add</button> */}
+        {profitQuery.data?.getter?.total}
+        <div>
+        <GetFormData />
+        </div>
       </div>
     ); 
   }
