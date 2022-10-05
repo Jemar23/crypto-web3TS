@@ -98,8 +98,9 @@ function Contain() {
         <div className="flex items-center justify-center text-center h-fit bg-transparent rounded-md border border-slate-700 shadow-lg overflow-auto">  
            <WalletConnect />   
         </div> 
+        <div className="text-center text-5xl md:text-[3rem] leading-normal font-extrabold text-gray-700">Total Profit Earned</div>
         <div className="text-center text-5xl md:text-[5rem] leading-normal font-extrabold text-gray-700">
-        {profitQuery.data?.getter?.total}
+        ${profitQuery.data?.getter?.total}
         </div>
         <div className="grid grid-cols-2 gap-4">
         <GetFormData />

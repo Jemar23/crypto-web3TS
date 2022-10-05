@@ -20,7 +20,7 @@ function Solranks() {
 
 function NumberOne() {
     return(
-        <div className="text-left text-5xl md:text-[5rem] leading-normal font-extrabold w-4/12 flex flex-row items-center justify-between p-6 text-white">
+        <div className="text-left text-5xl md:text-[5rem] leading-normal font-extrabold flex flex-row items-center justify-start p-6 text-white">
         <div className="p-4">#1</div>
         <Image
         className="rounded-lg"
@@ -38,7 +38,7 @@ function NumberOne() {
 
 function NumberTwo() {
     return(
-        <div className="text-left text-5xl md:text-[5rem] leading-normal font-extrabold w-4/12 flex flex-row items-center justify-between p-6 text-white">
+        <div className="text-left text-5xl md:text-[5rem] leading-normal font-extrabold flex flex-row items-center justify-start p-6 text-white">
         <div className="p-4">#2</div>
         <Image
         className="rounded-lg"
@@ -56,7 +56,7 @@ function NumberTwo() {
 
 function NumberThree() {
     return(
-        <div className="text-left text-5xl md:text-[5rem] leading-normal font-extrabold w-4/12 flex flex-row items-center justify-between p-6 text-white">
+        <div className="text-left text-5xl md:text-[5rem] leading-normal font-extrabold flex flex-row items-center justify-start p-6 text-white">
         <div className="p-4">#3</div>
         <Image
         className="rounded-lg"
