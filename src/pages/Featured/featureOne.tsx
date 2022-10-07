@@ -2,7 +2,6 @@ import React from 'react';
 import Image from 'next/image'
 
 function FeatureOne({ data }: {data: any}) {
-    console.log(data)
     return(
         <div className="bg-slate-600 mx-auto overflow-auto h-screen">
             <h1 className="text-center text-5xl md:text-[5rem] leading-normal font-extrabold text-gray-700">
@@ -10,11 +9,15 @@ function FeatureOne({ data }: {data: any}) {
             </h1>
             <div className="text-center text-5xl md:text-[1rem] leading-normal font-extrabold text-gray-400">
             <p>{data.collection.description}</p>
+            <div className="container mx-auto px-14 w-2/3 space-y-4 pt-12">
             <p>Current Floor Price: {data.collection.stats.floor_price} ETH</p>
             <p>Unique Owners: {data.collection.stats.num_owners}</p>
             <p>Total Sales: {data.collection.stats.total_sales}</p>
+            <p>Largest Sale: Bored Ape #8817 sold for $3.4 million USD</p>
+            </div>
             </div>
             <div> <LargestSale /> </div>
+            <OpenSeaButton />
         </div>
     ); 
 }
@@ -26,9 +29,17 @@ function LargestSale() {
         className="rounded-lg"
         src="https://img.seadn.io/files/0bf933d1c6cd84baebeeb1d3aec73996.png?fit=max&w=1000"
         alt="NFT Image"
-        width={400}
-        height={400} 
+        width={500}
+        height={500} 
         />
+        </div>
+    );
+}
+
+function OpenSeaButton() {
+    return(
+        <div className="flex justify-center">
+            <button>View on Opensea</button>
         </div>
     );
 }
