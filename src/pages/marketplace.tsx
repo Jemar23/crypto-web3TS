@@ -15,7 +15,7 @@ const marketplaces: markets[] = [
     { image: 'https://www.business2community.com/wp-content/uploads/2022/04/NFT-LaunchPad-logo.png', title: 'NFTLaunchPad', website: 'https://launchpad.xyz/'}, 
     { image: 'https://pbs.twimg.com/profile_images/1480727876517253123/lt1gKNp9_400x400.png', title: 'Crypto', website: 'https://crypto.com/nft/marketplace'}, 
     { image: 'https://pbs.twimg.com/profile_images/1493078398549348353/wTYBW3dP_400x400.png', title: 'FTX', website: 'https://ftx.us/nfts'}, 
-    { image: 'https://play-lh.googleusercontent.com/PjoJoG27miSglVBXoXrxBSLveV6e3EeBPpNY55aiUUBM9Q1RCETKCOqdOkX2ZydqVf0', title: 'Coinbase', website: 'https://nft.coinbase.com/'}, 
+    { image: 'https://yt3.ggpht.com/a/AATXAJw3PkjDymHkoh35r3mJNBX1p0JGH-AutrBktQ=s900-c-k-c0xffffffff-no-rj-mo', title: 'Coinbase', website: 'https://nft.coinbase.com/'}, 
     { image: 'https://dvh1deh6tagwk.cloudfront.net/finder-us/wp-uploads/sites/7/2021/09/MintableLogo_Supplied_250x250.png', title: 'Mintable', website: 'https://mintable.com/'},  
     { image: 'https://images.ctfassets.net/9tp4nbs38ooy/uuLGVJLwkI50InF4EXcnY/e7437b08282b87f5bf0885a735ec7406/logo.png', title: 'Foundation', website: 'https://foundation.app/'}, 
     { image: 'https://pbs.twimg.com/profile_images/1493695753990152194/IhmNLRMK_400x400.png', title: 'NiftyGateway', website: 'https://www.niftygateway.com/'}, 
