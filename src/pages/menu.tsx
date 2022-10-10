@@ -5,6 +5,10 @@ import { trpc } from "../utils/trpc";
 import { useForm, SubmitHandler } from "react-hook-form";
 import Link from 'next/link'
 import Image from 'next/image'
+import {
+  ColGrid
+} from '@tremor/react';
+
 
 interface IFormInput {
   buy: number
@@ -127,7 +131,7 @@ function Contain() {
 
       const options = {
         method: 'GET',
-        headers: {Accept: 'application/json', 'X-API-KEY': process.env.API_KEY}
+        headers: {Accept: 'application/json', 'X-API-KEY': '3953aeb7eb99428fb5e561bc416e85ba'}
       };
       
       const res: any = await fetch(`https://api.opensea.io/api/v1/assets?owner=${walletAddress}&order_direction=desc&limit=20&include_orders=false`, options)
