@@ -127,7 +127,7 @@ function Contain() {
 
       const options = {
         method: 'GET',
-        headers: {Accept: 'application/json', 'X-API-KEY': '3953aeb7eb99428fb5e561bc416e85ba'}
+        headers: {Accept: 'application/json', 'X-API-KEY': process.env.API_KEY}
       };
       
       const res: any = await fetch(`https://api.opensea.io/api/v1/assets?owner=${walletAddress}&order_direction=desc&limit=20&include_orders=false`, options)
