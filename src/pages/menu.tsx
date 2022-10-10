@@ -5,9 +5,6 @@ import { trpc } from "../utils/trpc";
 import { useForm, SubmitHandler } from "react-hook-form";
 import Link from 'next/link'
 import Image from 'next/image'
-import {
-  ColGrid
-} from '@tremor/react';
 
 
 interface IFormInput {

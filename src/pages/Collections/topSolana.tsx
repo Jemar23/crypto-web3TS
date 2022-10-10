@@ -30,7 +30,7 @@ function NumberOne() {
         height={400} 
         />
         <div className="text-3xl pl-4">
-        <Link href="" className="p-4">Info</Link>
+        <Link href="/Featured/solFeatureOne" className="p-4">Info</Link>
         </div>
         </div>
     );

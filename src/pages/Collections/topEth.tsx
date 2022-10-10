@@ -48,7 +48,7 @@ function NumberTwo() {
         height={400} 
         />
         <div className="text-3xl pl-4">
-        <Link href="" className="p-4">Info</Link>
+        <Link href="/Featured/featureTwo" className="p-4">Info</Link>
         </div>
         </div>
     );
@@ -66,7 +66,7 @@ function NumberThree() {
         height={400} 
         />
         <div className="text-3xl pl-4">
-        <Link href="" className="p-4">Info</Link>
+        <Link href="/Featured/featureThree" className="p-4">Info</Link>
         </div>
         </div>
     );
