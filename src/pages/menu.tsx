@@ -5,7 +5,34 @@ import { trpc } from "../utils/trpc";
 import { useForm, SubmitHandler } from "react-hook-form";
 import Link from 'next/link'
 import Image from 'next/image'
+import {
+  Card,
+  Metric,
+  ProgressBar,
+  Text,
+  Flex,
+} from '@tremor/react';
 
+function Progress() {
+  const { data: session } = useSession()
+  const profitQuery = trpc.useQuery(["example.getTotal", {id: session?.user?.id}])
+  const profit = profitQuery.data?.getter?.total as number;
+  const calc = (profit / 10000) * 100
+
+  return(
+    <div>
+      <Card>
+      <Text>One Year Profit Challenge!</Text>
+            <Metric>${profitQuery.data?.getter?.total}</Metric>
+            <Flex marginTop="mt-4">
+            <Text truncate={ true }>{ `${calc}% ($${profitQuery.data?.getter?.total as number})` }</Text>
+                <Text>{ 10000 }</Text>
+            </Flex>
+          <ProgressBar percentageValue={calc} marginTop="mt-2" />
+      </Card>
+    </div>
+  );
+}
 
 interface IFormInput {
   buy: number
@@ -96,6 +123,7 @@ function Contain() {
   
     return (
       <div className="container mx-auto px-14 w-2/3 space-y-4 pt-12 text-lg text-slate-300"> 
+          <Progress />
         <div className="flex items-center justify-center text-center h-fit bg-transparent rounded-md border border-slate-700 shadow-lg overflow-auto">  
            <WalletConnect />   
         </div> 
