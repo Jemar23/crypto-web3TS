@@ -1,6 +1,7 @@
 import { GetStaticProps } from 'next';
 import React from 'react';
-import Link from 'next/link'
+import Link from 'next/link';
+
 
 export async function getStaticProps() {
     const options = {
@@ -42,6 +43,7 @@ function Prices({ data }: GetStaticProps) {
     </div>
     )
 }
+
 const Menu = React.forwardRef(({ onClick, href }, ref) => {
   return (
       <div className="text-black text-xl absolute left-6 top-6 h-16 w-16 font-semibold animate-bounce">

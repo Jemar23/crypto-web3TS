@@ -26,7 +26,7 @@ function Progress() {
             <Metric>${profitQuery.data?.getter?.total}</Metric>
             <Flex marginTop="mt-4">
             <Text truncate={ true }>{ `${calc}% ($${profitQuery.data?.getter?.total as number})` }</Text>
-                <Text>{ 10000 }</Text>
+                <Text>${ 10000 }</Text>
             </Flex>
           <ProgressBar percentageValue={calc} marginTop="mt-2" />
       </Card>
@@ -98,7 +98,7 @@ function Menu() {
 function Nav() {
   const { data: session } = useSession()
     return(
-    <div className="bg-black text-white font-extrabold text-center p-4 flex flex-col text-xl absolute inset-y-0 left-0 w-64 place-content-evenly">
+    <div className="bg-black text-white font-extrabold text-center p-4 flex flex-col text-xl absolute inset-y-0 left-0 w-64 xl:w-64 lg:w-48 md:40 sm:w-40 place-content-evenly">
       Hello {session?.user?.name}!
         <Image
         className="rounded-full"
