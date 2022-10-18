@@ -16,7 +16,7 @@ export default defineNextConfig({
   reactStrictMode: true,
   swcMinify: true,
   images: {
-    domains: ["lh3.googleusercontent.com", "cdn.discordapp.com", "img.seadn.io", "i.seadn.io"]
+    domains: ["lh3.googleusercontent.com", "cdn.discordapp.com", "img.seadn.io", "i.seadn.io", "www.economywatch.com", "orionx.net", "i.pinimg.com"]
   }
 });
 

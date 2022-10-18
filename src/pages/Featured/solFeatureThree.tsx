@@ -4,10 +4,10 @@ import Image from 'next/image'
 function SolFeatureThree({ data }: {data: any}) {
     return(
         <div className="bg-black mx-auto overflow-auto h-screen">
-            <h1 className="text-center text-5xl md:text-[5rem] leading-normal font-extrabold text-white">
+            <h1 className="text-center text-4xl md:text-[5rem] leading-normal font-extrabold text-white">
               Cets on Crack
             </h1>
-            <div className="text-center text-5xl md:text-[1.3rem] sm:text-[1rem] leading-normal font-extrabold text-white">
+            <div className="text-center text-1xl md:text-[1.3rem] sm:text-[1rem] leading-normal font-extrabold text-white">
             <p>{data.collection.description}</p>
             <div className="container mx-auto px-14 w-2/3 space-y-4 pt-12">
             <p>Total Sales: <span className="text-slate-100">{data.collection.stats.total_sales} </span></p>

@@ -1,6 +1,8 @@
-import { GetStaticProps } from 'next'
+import { GetStaticProps } from 'next';
 import React from 'react';
-import Link from 'next/link'
+import Link from 'next/link';
+import { TwitterTimelineEmbed } from 'react-twitter-embed';
+import Image from 'next/image';
 
 export async function getStaticProps() {
     const options = {
@@ -30,12 +32,22 @@ function BitCoin({ data }: GetStaticProps) {
             </Link> 
           <div className="container mx-auto px-14 w-2/3 space-y-4 pt-12 text-lg text-slate-300">
            <div className="text-center"> 
-                  <h1 className="text-3xl">Bitcoin</h1>
+                  <h1 className="text-center text-3xl md:text-[3rem] leading-normal font-extrabold text-slate-300">Bitcoin</h1>
                 </div>
               <div id="inventory" className="flex items-center justify-center text-center h-96 bg-gradient-to-r from-black via-amber-600 to-gray-500 rounded-md border border-slate-700 shadow-lg overflow-hidden">
-              <img className="w-24 rounded-full" src= "https://i.pinimg.com/originals/ca/1b/79/ca1b79af209cb5d3935bddb1513ba220.jpg" /> 
-                <h1 className="text-3xl p-4">${data.data.amount}</h1>
+              <Image 
+              className="w-24 rounded-full" 
+              src= "https://i.pinimg.com/originals/ca/1b/79/ca1b79af209cb5d3935bddb1513ba220.jpg"
+              width={200}
+              height={200}
+              alt="Logo" /> 
+                <h1 className="text-3xl leading-normal font-extrabold p-4">${data.data.amount}</h1>
           </div>
+          <TwitterTimelineEmbed
+                sourceType="profile"
+                screenName="BTCTN"
+                options={{height: 400}}
+               />
           </div>
       </div>
     </div>

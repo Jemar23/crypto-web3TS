@@ -2,10 +2,9 @@ import React from 'react';
 import { GetStaticProps } from 'next';
 
 function SolanaTwitter({data}) {
-    console.log(data)
     return(
         <div className="bg-gray-900 h-screen">
-            
+            {data.data[0].text}
         </div>  
     ) 
 }

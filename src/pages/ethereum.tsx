@@ -1,8 +1,8 @@
 import { GetStaticProps } from 'next'
 import React from 'react';
 import Link from 'next/link'
-import MediaCard from './Collections/opensea'
-
+import { TwitterTimelineEmbed } from 'react-twitter-embed';
+import Image from 'next/image';
 
 
 
@@ -34,12 +34,22 @@ function Ethereum({ data }: GetStaticProps) {
             </Link>  
           <div className="container mx-auto px-14 w-2/3 space-y-4 pt-12 text-lg text-slate-300">
            <div className="text-center"> 
-                  <h1 className="text-3xl">Ethereum</h1>
+                  <h1 className="text-center text-3xl md:text-[3rem] leading-normal font-extrabold text-slate-300">Ethereum</h1>
                 </div>
               <div id="inventory" className="flex items-center justify-center text-center h-96 bg-gradient-to-r from-black via-slate-800 to-indigo-400 rounded-md border border-slate-700 shadow-lg overflow-hidden">
-              <img className="w-24 rounded-full" src= "https://orionx.net/wp-content/uploads/2018/04/Ethereum-logo-black-888x500.jpg" /> 
-                <h1 className="text-3xl p-4">${data.data.amount}</h1>
+              <Image 
+              className="w-24 rounded-full" 
+              src= "https://orionx.net/wp-content/uploads/2018/04/Ethereum-logo-black-888x500.jpg"
+              width={200}
+              height={200}
+              alt="Logo" /> 
+                <h1 className="text-3xl leading-normal font-extrabold p-4">${data.data.amount}</h1>
           </div>
+             <TwitterTimelineEmbed
+                sourceType="profile"
+                screenName="ethereum"
+                options={{height: 400}}
+               />
           </div>
       </div>
     </div>

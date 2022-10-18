@@ -1,6 +1,8 @@
 import { GetStaticProps } from 'next';
-import React from 'react';
+import { TwitterTimelineEmbed } from 'react-twitter-embed';
+import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 
 export async function getStaticProps() {
@@ -32,16 +34,36 @@ function Prices({ data }: GetStaticProps) {
             </Link> 
           <div className="container mx-auto px-14 w-2/3 space-y-4 pt-12 text-lg text-black">
            <div className="text-center"> 
-                  <h1 className="text-3xl">Solana</h1>
+                <h1 className="text-center text-3xl md:text-[3rem] leading-normal font-extrabold text-black">Solana</h1>
                 </div>
               <div id="inventory" className="flex items-center justify-center text-center h-96 bg-gradient-to-r from-pink-400 via-purple-600 to-teal-500 rounded-md border border-slate-700 shadow-lg overflow-hidden">
-              <img className="w-24 rounded-full" src="https://www.economywatch.com/wp-content/uploads/2021/06/solana-1.jpg" /> 
-                <h1 className="text-3xl p-4">${data.data.amount}</h1>
+              <Image 
+              className="w-24 rounded-full" 
+              src="https://www.economywatch.com/wp-content/uploads/2021/06/solana-1.jpg"
+              width={200}
+              height={200}
+              alt="Logo" /> 
+                <h1 className="text-3xl leading-normal font-extrabold p-4">${data.data.amount}</h1>
           </div>
+              <Embed /> 
           </div>
       </div>
     </div>
     )
+}
+
+
+
+function Embed() {
+  return(
+    <div>
+      <TwitterTimelineEmbed
+          sourceType="profile"
+          screenName="solana"
+          options={{height: 400}}
+      />
+    </div>
+  );
 }
 
 const Menu = React.forwardRef(({ onClick, href }, ref) => {

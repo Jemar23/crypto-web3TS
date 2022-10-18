@@ -28,8 +28,8 @@ const Home: NextPage = () => {
       </Head>
 
       <main className="mx-auto flex flex-col items-center justify-center min-h-screen p-4 bg-gradient-to-r from-indigo-500 ">
-        <h1 className="text-5xl md:text-[5rem] leading-normal font-extrabold text-gray-700">
-          Enter Into the <span className="text-blue-600">NFT</span> World
+        <h1 className="text-5xl md:text-[5rem] leading-normal font-extrabold text-black">
+          Enter Into the <span className="text-indigo-600">NFT</span> World
         </h1>
 
         <div className="flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
@@ -41,14 +41,14 @@ const Home: NextPage = () => {
           <button 
           type="button"
           onClick={() => signIn()}
-          className="group relative flex w-full justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+          className="group relative flex w-full justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-black hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
               Sign Up!
             </button>
         </div>
         </form>
         </div>
         <div className="pt-6 text-2xl text-blue-500 flex justify-center items-center w-full">
-          {hello.data ? <p>{hello.data.greeting}</p> : <p>Loading..</p>}
+          {/* {hello.data ? <p>{hello.data.greeting}</p> : <p>Loading..</p>} */}
         </div>
       </main>
     </>
