@@ -169,7 +169,7 @@ function Contain() {
         .then(response => console.log(response)) 
         .catch(err => console.error(err));
 
-        const data = await res?.json() 
+        const data = await res?.json()  
 
         setWalletNft(data?.assets)
     }
