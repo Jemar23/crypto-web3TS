@@ -1,5 +1,13 @@
 import React from 'react';
-import Image from 'next/image'
+import Image from 'next/image';
+import { OpenSeaStreamClient } from '@opensea/stream-js';
+
+
+// const KEY = process.env.API_KEY;
+// const client = new OpenSeaStreamClient({
+//     token: `${KEY}`,
+//   });
+
 
 function FeatureOne({ data }: {data: any}) {
     return(
