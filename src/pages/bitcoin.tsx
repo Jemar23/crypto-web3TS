@@ -38,8 +38,8 @@ function BitCoin({ data }: GetStaticProps) {
               <Image 
               className="w-24 rounded-full" 
               src= "https://i.pinimg.com/originals/ca/1b/79/ca1b79af209cb5d3935bddb1513ba220.jpg"
-              width={200}
-              height={200}
+              width={120}
+              height={80}
               alt="Logo" /> 
                 <h1 className="text-3xl leading-normal font-extrabold p-4">${data.data.amount}</h1>
           </div>

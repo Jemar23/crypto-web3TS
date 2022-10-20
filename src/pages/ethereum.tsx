@@ -40,8 +40,8 @@ function Ethereum({ data }: GetStaticProps) {
               <Image 
               className="w-24 rounded-full" 
               src= "https://orionx.net/wp-content/uploads/2018/04/Ethereum-logo-black-888x500.jpg"
-              width={200}
-              height={200}
+              width={120}
+              height={80}
               alt="Logo" /> 
                 <h1 className="text-3xl leading-normal font-extrabold p-4">${data.data.amount}</h1>
           </div>

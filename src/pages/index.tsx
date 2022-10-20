@@ -27,9 +27,9 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="mx-auto flex flex-col items-center justify-center min-h-screen p-4 bg-gradient-to-r from-indigo-500 ">
+      <main className="mx-auto flex flex-col items-center justify-center min-h-screen p-4 bg-gradient-to-r from-black to-blue-700">
         <h1 className="text-5xl md:text-[5rem] leading-normal font-extrabold text-black">
-          Enter Into the <span className="text-indigo-600">NFT</span> World
+          Enter Into the <span className="text-blue-400">NFT</span> World
         </h1>
 
         <div className="flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
@@ -41,7 +41,7 @@ const Home: NextPage = () => {
           <button 
           type="button"
           onClick={() => signIn()}
-          className="group relative flex w-full justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-black hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+          className="group relative flex w-full justify-center rounded-md border border-transparent bg-blue-600 py-2 px-4 text-sm font-medium text-black hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
               Sign Up!
             </button>
         </div>

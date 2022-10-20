@@ -40,7 +40,7 @@ function Prices({ data }: GetStaticProps) {
               <Image 
               className="w-24 rounded-full" 
               src="https://www.economywatch.com/wp-content/uploads/2021/06/solana-1.jpg"
-              width={80}
+              width={120}
               height={80}
               alt="Logo" /> 
                 <h1 className="text-3xl leading-normal font-extrabold p-4">${data.data.amount}</h1>
