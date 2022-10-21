@@ -1,4 +1,5 @@
-
+import React from 'react';
+import Link from 'next/link';
 interface markets {
     image: string
     title: string
@@ -27,6 +28,9 @@ const marketplaces: markets[] = [
 function MarketPlaces() {
     return(
         <div className="bg-[url('https://content.fortune.com/wp-content/uploads/2022/01/web_FRESHAIR.jpg?w=800&h=919')] bg-no-repeat bg-cover h-full">
+            <Link href="/menu" passHref>
+            <Menu />
+            </Link> 
             <div className="text-center text-5xl md:text-[5rem] leading-normal font-extrabold text-gray-700">Browse NFT MarketPlaces!</div>
             <div className="">
                 <Markets />
@@ -54,5 +58,17 @@ function Markets() {
         </div>
      )
  }
+
+ const Menu = React.forwardRef(({ onClick, href }, ref) => {
+    return (
+        <div className="text-black text-xl absolute left-6 top-6 h-16 w-16 font-semibold animate-bounce">
+      <a href={href} onClick={onClick} ref={ref}>
+        Menu
+      </a>
+      </div>
+    )
+  })
+  
+  Menu.displayName = 'TheComponent';
 
 export default MarketPlaces;

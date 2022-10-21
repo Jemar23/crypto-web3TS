@@ -1,6 +1,5 @@
 import NextAuth, { type NextAuthOptions } from "next-auth";
 import DiscordProvider from "next-auth/providers/discord";
-import CoinbaseProvider from "next-auth/providers/coinbase";
 import GitHubProvider from "next-auth/providers/github";
 
 // Prisma adapter for NextAuth, optional and can be removed
@@ -24,10 +23,6 @@ export const authOptions: NextAuthOptions = {
     DiscordProvider({
       clientId: env.DISCORD_CLIENT_ID,
       clientSecret: env.DISCORD_CLIENT_SECRET
-    }),
-    CoinbaseProvider({
-      clientId: env.COINBASE_CLIENT_ID,
-      clientSecret: env.COINBASE_CLIENT_SECRET
     }),
     GitHubProvider({
       clientId: env.GITHUB_ID,
