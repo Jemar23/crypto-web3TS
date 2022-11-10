@@ -66,7 +66,7 @@ function Embed() {
   );
 }
 
-const Menu = React.forwardRef(({ onClick, href }, ref) => {
+const Menu = React.forwardRef(({ onClick, href }: {onClick: React.MouseEventHandler<HTMLAnchorElement>, href: string}, ref: React.LegacyRef<HTMLAnchorElement>) => {
   return (
       <div className="text-black text-xl absolute left-6 top-6 h-16 w-16 font-semibold animate-bounce">
     <a href={href} onClick={onClick} ref={ref}>
@@ -78,7 +78,7 @@ const Menu = React.forwardRef(({ onClick, href }, ref) => {
 
 Menu.displayName = 'TheComponent';
 
-const MyButton = React.forwardRef(({ onClick, href }, ref) => {
+const MyButton = React.forwardRef(({ onClick, href }: {onClick: React.MouseEventHandler<HTMLAnchorElement>, href: string}, ref: React.LegacyRef<HTMLAnchorElement>) => {
     return (
         <div className="text-black text-xl absolute top-6 right-6 h-16 w-16 font-semibold animate-bounce">
       <a href={href} onClick={onClick} ref={ref}>

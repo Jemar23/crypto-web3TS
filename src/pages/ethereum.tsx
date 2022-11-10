@@ -56,7 +56,7 @@ function Ethereum({ data }: GetStaticProps) {
     )
 }
 
-const MyButton = React.forwardRef(({ onClick, href }, ref) => {
+const MyButton = React.forwardRef(({ onClick, href }: {onClick: React.MouseEventHandler<HTMLAnchorElement>, href: string}, ref: React.LegacyRef<HTMLAnchorElement>) => {
     return (
         <div className="text-slate-300 text-xl absolute top-6 right-6 h-16 w-16 font-semibold animate-bounce">
       <a href={href} onClick={onClick} ref={ref}>
@@ -68,7 +68,7 @@ const MyButton = React.forwardRef(({ onClick, href }, ref) => {
 
   MyButton.displayName = 'MyComponent';
 
-  const Prev = React.forwardRef(({ onClick, href }, ref) => {
+  const Prev = React.forwardRef(({ onClick, href }: {onClick: React.MouseEventHandler<HTMLAnchorElement>, href: string}, ref: React.LegacyRef<HTMLAnchorElement>) => {
     return (
         <div className="text-slate-300 text-xl absolute left-6 top-6 h-16 w-16 font-semibold animate-bounce">
       <a href={href} onClick={onClick} ref={ref}>
