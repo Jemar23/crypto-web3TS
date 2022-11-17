@@ -21,7 +21,7 @@ export async function getStaticProps() {
 }
 
 
-function Prices({ data }: GetStaticProps) {
+function Prices({ data }: {data: any}) {
     return(
         <div className="backdrop-blur-lg bg-[url('https://cdn.pixabay.com/photo/2016/10/15/02/19/purple-1741713__340.jpg')] bg-no-repeat bg-cover h-screen">
             <div className="backdrop-blur-lg h-screen">
